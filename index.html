@@ -9,8 +9,52 @@
     <title>Momentum</title>
   </head>
   <body>
-    <header class="header"></header>
-    <main class="main"></main>
-    <footer class="footer"></footer>
+    <header class="header">
+      <div class="header__player">
+        <div class="header__player__controls">
+          <div class="header__player__controls_prev player-icon"></div>
+          <div class="header__player__controls_play player-icon"></div>
+          <div class="header__player__controls_next player-icon"></div>
+        </div>
+        <ul class="header__player__playlist">
+          <li class="header__player__playlist__play-item">Aqua Caelestis</li>
+          <li class="header__player__playlist__play-item">
+            River Flows In You
+          </li>
+          <li class="header__player__playlist__play-item">Summer Wind</li>
+          <li class="header__player__playlist__play-item">Ennio Morricone</li>
+        </ul>
+      </div>
+      <div class="weather">
+        <input type="text" class="city" />
+        <i class="weather-icon owf"></i>
+        <div class="weather-error"></div>
+        <div class="description-container">
+          <span class="temperature"></span>
+          <span class="weather-description"></span>
+        </div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main__slider-icons">
+        <button class="main__slider-icon main__slide_prev slider-icon"></button>
+        <button class="main__slider-icon main__slide_next slider-icon"></button>
+      </div>
+      <time class="time">17:58:00</time>
+      <date class="date">Friday, May 27</date>
+      <div class="greeting-container">
+        <span class="greeting">Good afternoon</span>
+        <input type="text" class="name" />
+      </div>
+    </main>
+    <footer class="footer">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </footer>
   </body>
 </html>
