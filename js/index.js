@@ -18,7 +18,7 @@ setTimeout(function showTime() {
   showDate();
   greeting.textContent = greetingText;
   setTimeout(showTime, 1000);
-}, 1000);
+});
 
 //Приветствие
 const greeting = document.querySelector('.greeting');
@@ -33,3 +33,16 @@ function getTimeOfDay() {
   else if (partOfDay >= 2 && partOfDay < 3) return 'day';
   else return 'evening';
 }
+
+const userName = document.querySelector('.name');
+function setLocalStorage() {
+  localStorage.setItem('name', userName.value);
+}
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+  if (localStorage.getItem('name')) {
+    userName.value = localStorage.getItem('name');
+  }
+}
+window.addEventListener('load', getLocalStorage);
