@@ -119,3 +119,39 @@ async function getWeather() {
 
 window.addEventListener("DOMContentLoaded", getWeather);
 city.addEventListener("change", getWeather);
+
+//Цитаты
+const quote = document.querySelector(".quote");
+const author = document.querySelector(".author");
+const changeQuote = document.querySelector(".change-quote");
+Object.prototype.mixArr = function () {
+  return this.map((i) => [Math.random(), i])
+    .sort()
+    .map((i) => i[1])[0];
+};
+
+// async function getQuotes() {
+//   const quotes = "https://www.breakingbadapi.com/api/quotes";
+//   const response = await fetch(quotes);
+//   const data = await response.json();
+
+//   const rundomQuote = data.mixArr();
+//   quote.textContent = rundomQuote.quote;
+//   author.textContent = rundomQuote.author;
+// }
+// getQuotes();
+
+// changeQuote.addEventListener("click", getQuotes);
+
+async function getQuotes() {
+  const quotes = "data.json";
+  const response = await fetch(quotes);
+  const data = await response.json();
+
+  const rundomQuote = data.mixArr();
+  quote.textContent = rundomQuote.quote;
+  author.textContent = rundomQuote.author;
+}
+getQuotes();
+
+changeQuote.addEventListener("click", getQuotes);
