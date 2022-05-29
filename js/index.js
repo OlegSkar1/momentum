@@ -37,12 +37,16 @@ function getTimeOfDay() {
 const userName = document.querySelector(".name");
 function setLocalStorage() {
   localStorage.setItem("name", userName.value);
+  localStorage.setItem("city", city.value);
 }
 window.addEventListener("beforeunload", setLocalStorage);
 
 function getLocalStorage() {
   if (localStorage.getItem("name")) {
     userName.value = localStorage.getItem("name");
+  }
+  if (localStorage.getItem("city")) {
+    city.value = localStorage.getItem("city");
   }
 }
 window.addEventListener("DOMContentLoaded", getLocalStorage);
@@ -93,3 +97,25 @@ function getSliderNext() {
 
 sliderPrev.addEventListener("click", getSliderPrev);
 sliderNext.addEventListener("click", getSliderNext);
+
+//Погода
+const weatherIcon = document.querySelector(".weather-icon");
+const temperature = document.querySelector(".temperature");
+const weatherDescription = document.querySelector(".weather-description");
+const city = document.querySelector(".city");
+
+async function getWeather() {
+  if (city.value) {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=ru&APPID=f48cd4ff28ab6b813d969f5684d66467&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    weatherIcon.className = "weather-icon owf";
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+  }
+}
+
+window.addEventListener("DOMContentLoaded", getWeather);
+city.addEventListener("change", getWeather);
