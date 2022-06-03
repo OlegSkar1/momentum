@@ -16,14 +16,15 @@
           <div class="header__player__controls_play player-icon"></div>
           <div class="header__player__controls_next player-icon"></div>
         </div>
-        <ul class="header__player__playlist">
-          <!-- <li class="header__player__playlist__play-item">Aqua Caelestis</li>
-          <li class="header__player__playlist__play-item">
-            River Flows In You
-          </li>
-          <li class="header__player__playlist__play-item">Summer Wind</li>
-          <li class="header__player__playlist__play-item">Ennio Morricone</li> -->
-        </ul>
+        <div class="header__progressiveArea">
+          <div class="header__progressiveBar"></div>
+          <div class="timer">
+            <span class="current">0:20</span>
+            <span class="current">3:20</span>
+          </div>
+        </div>
+        <audio id="main-audio" src=""></audio>
+        <ul class="header__player__playlist"></ul>
       </div>
       <div class="weather">
         <input type="text" class="city" placeholder="Введите город" />

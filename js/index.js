@@ -131,19 +131,6 @@ Object.prototype.mixArr = function () {
     .map((i) => i[1])[0];
 };
 
-// async function getQuotes() {
-//   const quotes = "https://www.breakingbadapi.com/api/quotes";
-//   const response = await fetch(quotes);
-//   const data = await response.json();
-
-//   const rundomQuote = data.mixArr();
-//   quote.textContent = rundomQuote.quote;
-//   author.textContent = rundomQuote.author;
-// }
-// getQuotes();
-
-// changeQuote.addEventListener("click", getQuotes);
-
 async function getQuotes() {
   const quotes = 'data.json';
   const response = await fetch(quotes);
@@ -167,33 +154,36 @@ playList.forEach((i) => {
 });
 
 let isPlay = false;
+const player = document.querySelector('.header__player');
 const playButton = document.querySelector('.header__player__controls_play');
 const prevButton = document.querySelector('.header__player__controls_prev');
 const nextButton = document.querySelector('.header__player__controls_next');
 const playItems = document.querySelectorAll(
   '.header__player__playlist__play-item'
 );
+const mainAudio = document.querySelector('#main-audio');
+const progressBar = document.querySelector('.header__progressiveBar');
 
 let playNum = 0;
-const audio = new Audio();
 
-function play() {
+window.addEventListener('load', () => {
+  loadMusic(playNum);
+});
+
+function loadMusic(playNum) {
   playButton.classList.add('header__player__controls_pause');
-  audio.src = playList[playNum].src;
-  audio.currentTime = 0;
-  audio.play();
+  mainAudio.src = playList[playNum].src;
+  mainAudio.currentTime = 0;
 }
 
-function playAudio() {
-  if (isPlay === false) {
-    isPlay = true;
-    playItems[playNum].classList.add('play-item-active');
-    play();
-  } else {
-    playButton.classList.remove('header__player__controls_pause');
-    isPlay = false;
-    audio.pause();
-  }
+function playMusic() {
+  player.classList.add('paused');
+  mainAudio.play();
+}
+
+function pauseMusic() {
+  player.classList.remove('paused');
+  mainAudio.pause();
 }
 
 function playPrev() {
@@ -224,6 +214,9 @@ function playNext() {
   play();
 }
 
-playButton.addEventListener('click', playAudio);
+playButton.addEventListener('click', () => {
+  const isMusicPaused = player.classList.contains('paused');
+  isMusicPaused ? pauseMusic() : playMusic();
+});
 prevButton.addEventListener('click', playPrev);
 nextButton.addEventListener('click', playNext);
