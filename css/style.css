@@ -51,13 +51,13 @@ body {
 .header__progressiveArea .header__progressiveBar {
   height: inherit;
   position: relative;
-  width: 50%;
+  width: 0;
   border-radius: inherit;
   background: linear-gradient(90deg, #ff74a4 0%, #9f6ea3 100%);
 }
 
 .header__progressiveBar::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 12px;
   width: 12px;
@@ -155,7 +155,7 @@ body {
 }
 
 .header__player__playlist__play-item::before {
-  content: '\2713';
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 2px;
@@ -299,7 +299,7 @@ body {
 
 .change-quote {
   margin-bottom: 30px;
-  background-image: url('../assets/svg/reload.svg');
+  background-image: url("../assets/svg/reload.svg");
 }
 
 .quote {
